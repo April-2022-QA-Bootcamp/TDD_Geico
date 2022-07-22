@@ -1,0 +1,46 @@
+Web Application - Selenium, Karate - Java, JavaScript, Python, Ruby
+Mobile Application - Appium - Java, JavaScript, Python, Ruby
+API/Web services/ Micro Services - RestAssured, Karate - Java, JavaScript
+Database Testing - JDBC - Java
+CI/CD Automation - Java
+
+Automation Tests: Assertions and Validations
+Unit test
+Integration test
+Smoke test
+Regression Test
+
+TestNG, JUnit - testing framework
+
+1. download the driver
+2. version need to match with the current browser
+3. specify the path
+
+webdrivermanager
+
+Types Framework:
+TDD - test Driven development
+BDD - Behaviour driven development
+ATDD - Acceptence Test Driven Development / BDD
+DDD - Data Driven Development
+Keyword Driven Development
+Moduler Driven Deveopment
+Linear scripting framework
+
+Designe Pattern:
+1. Page Object Model
+2. Builder
+3. Singleton
+
+Types of designe pattern : 3000
+1. Creationl
+2. Structural
+3. Behaviour
+
+Environments:
+1. Dev - geico.dev.com - Payment feature
+2. QA / UAT - geici.qa.com - closing - passed - deployment into QA
+3. STG / UAT - geico.stg.com - regression - Code deploy to STG
+4. PROD - geico.com - Release
+
+
