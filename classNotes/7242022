@@ -1,0 +1,33 @@
+TestNG Annotation Hierarchy
+@BeforeSuite
+@BeforeTest
+@BeforeClass
+@BeforeMethod
+@Test
+@AfterMethod
+@AfterClass
+@AfterTest
+@AfterSuite
+
+Actions:
+1. Click
+2. Send Keys
+3. Drop Down
+4. Actions
+5. isDisplayed
+6. isSelected
+7. isPresent
+8. Scroll
+9. Javascript executor
+10. getText
+11. getAttributes
+
+Checked exception vs Unchecked
+Checked Exception that force you to handle exception and it can checked in compile time. Such as IOException
+Unchecked Exception will happens in runtime. these exceptions come under Error and RuntimeException- NullPointer, ArrayOutOfBound
+
+WebElement vs WebElements
+WebElement will throw NoSuchElementException while not found
+WebElements will return a list of zero index, no exception will be thrown
+
+LOB - Line Of Business
