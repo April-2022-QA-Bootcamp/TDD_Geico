@@ -8,6 +8,7 @@ public class AutoTestClass extends BaseClass{
 
 	@Test
 	public void getAAutoQuote() {
-		
+		homePage.homepageSteps("11418");
+		aboutYou.aboutYouSteps("About You", "https://sales.geico.com/quote");
 	}
 }
