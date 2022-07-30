@@ -20,8 +20,12 @@ public class HomePage {
 	WebElement zipCodElement;
 	@FindBy(xpath = "//div[@class='card' and @data-product='auto']")
 	WebElement autoProductElement;
+	@FindBy(xpath = "(//div[@class='card' and @data-product='homeowners'])[1]")
+	WebElement homeProductElement;
 	@FindBy(xpath = "//a[text()='Start My Quote']")
 	WebElement startMyQuotElement;
+	@FindBy(id = "submitBtn")
+	WebElement startMyHomeQuotElement;
 	@FindBy(xpath = "(//input[@value='Continue'])[1]")
 	WebElement continuElement;
 	
@@ -33,18 +37,32 @@ public class HomePage {
 		commons.click(autoProductElement);
 	}
 	
+	private void clickHome() {
+		commons.click(homeProductElement);
+	}
+	
 	private void clickStartMyQuote() {
 		commons.click(startMyQuotElement);
+	}
+	
+	private void clickStartMyHomeQuote() {
+		commons.click(startMyHomeQuotElement);
 	}
 	
 	private void clickContinue() {
 		commons.click(continuElement);
 	}
 	
-	public void homepageSteps(String value) {
+	public void homepageAutoSteps(String value) {
 		inputZipCode(value);
 		clickAuto();
 		clickStartMyQuote();
 		clickContinue();
+	}
+	
+	public void homepageHomeSteps(String value) {
+		inputZipCode(value);
+		clickHome();
+		clickStartMyHomeQuote();
 	}
 }

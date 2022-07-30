@@ -6,9 +6,10 @@ import com.geico.qa.base.BaseClass;
 
 public class AutoTestClass extends BaseClass{
 
-	@Test
+	@Test(enabled = false)
 	public void getAAutoQuote() {
-		homePage.homepageSteps("11418");
-		aboutYou.aboutYouSteps("About You", "https://sales.geico.com/quote");
+		homePage.homepageAutoSteps("11418");
+		aboutYou.aboutYouSteps("About You", "https://sales.geico.com/quote","Let’s get started.", "02/02/1988",
+				"David", "Miller", "Tell us about yourself.", "There was a problem while processing the information you submitted.");
 	}
 }

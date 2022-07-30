@@ -48,4 +48,15 @@ public class Commons {
 		Loggers.getLog("Current URL is : " + driver.getCurrentUrl());
 		return driver.getCurrentUrl();
 	}
+	
+	public void clear(WebElement element) {
+		try {
+			element.clear();
+			Loggers.getLog("Value has been cleared from this element ---> " + element);
+		} catch (NullPointerException | NoSuchElementException e) {
+			e.printStackTrace();
+			Loggers.getLog(element + " : This element Not Found");
+			Assert.fail();
+		}
+	}
 }
