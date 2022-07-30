@@ -27,7 +27,7 @@ public class BaseClass {
 	
 	@BeforeMethod
 	public void setUp() {
-		driver = localDriver("chrome");
+		driver = localDriver("edge");
 		driver.manage().window().maximize();
 		driver.get(configuration.getConfiguration("url"));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(configuration.getConfiguration("pageloadWait"))));
