@@ -23,6 +23,24 @@ public class AboutYou {
 	@FindBy(tagName = "h4")
 	WebElement titlElement;
 	
+	@FindBy(tagName = "h3")
+	WebElement subTitle;
+	
+	@FindBy(className = "date")
+	WebElement dobElement;
+	
+	@FindBy(xpath = "//button[contains(.,'Next')]")
+	WebElement nextButtonWebElement;
+	
+	@FindBy(xpath = "//input[@data-formotivid='FirstName']")
+	WebElement firstNamElement;
+	
+	@FindBy(xpath = "//input[@data-formotivid='LastName']")
+	WebElement lastNamElement;
+	
+	@FindBy(xpath = "(//div[@class='row']//p)[1]")
+	WebElement errorMsgElement;
+	
 	private void getTitle(String expected) {
 		assertEquals(expected, commons.getText(titlElement));
 	}
@@ -31,8 +49,41 @@ public class AboutYou {
 		assertEquals(expectedUrl, commons.getCurrentUrl(driver));
 	}
 	
-	public void aboutYouSteps(String expected, String expectedUrl) {
+	private void getSubTitle(String expectedSubTitle) {
+		assertEquals(expectedSubTitle, commons.getText(subTitle));
+	}
+	
+	private void inputDOB(String dob) {
+		commons.inputValues(dobElement, dob);
+	}
+	
+	private void clickNext() {
+		commons.click(nextButtonWebElement);
+	}
+	
+	private void inputFirstName(String firstName) {
+		commons.inputValues(firstNamElement, firstName);
+	}
+	
+	private void inputLastName(String lastName) {
+		commons.inputValues(lastNamElement, lastName);
+	}
+	
+	private void getErrorMsg(String expectedError) {
+		assertEquals(expectedError, commons.getText(errorMsgElement));
+	}
+	
+	public void aboutYouSteps(String expected, String expectedUrl, String expectedSubTitle1, String dob, 
+			String firstName, String lastName, String expectedSubTitle2, String errorMsg) {
 		getTitle(expected);
 		getCurrentUrl(expectedUrl);
+		getSubTitle(expectedSubTitle1);
+		inputDOB(dob);
+		clickNext();
+		inputFirstName(firstName);
+		inputLastName(lastName);
+		getSubTitle(expectedSubTitle2);
+		clickNext();
+		getErrorMsg(errorMsg);
 	}
 }

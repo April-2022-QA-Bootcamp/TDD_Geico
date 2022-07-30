@@ -11,7 +11,9 @@ import org.testng.annotations.BeforeMethod;
 
 import com.geico.qa.common.Commons;
 import com.geico.qa.objects.AboutYou;
+import com.geico.qa.objects.HomeAddress;
 import com.geico.qa.objects.HomePage;
+import com.geico.qa.objects.HomeownerAboutYou;
 import com.geico.qa.utils.Configuration;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -24,10 +26,12 @@ public class BaseClass {
 	protected Commons commons;
 	protected HomePage homePage;
 	protected AboutYou aboutYou;
+	protected HomeAddress homeAddress;
+	protected HomeownerAboutYou homeownerAboutYou;
 	
 	@BeforeMethod
 	public void setUp() {
-		driver = localDriver("edge");
+		driver = localDriver("chrome");
 		driver.manage().window().maximize();
 		driver.get(configuration.getConfiguration("url"));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(configuration.getConfiguration("pageloadWait"))));
@@ -56,6 +60,8 @@ public class BaseClass {
 		commons = new Commons();
 		homePage = new HomePage(driver, commons);
 		aboutYou = new AboutYou(driver, commons);
+		homeAddress = new HomeAddress(driver, commons);
+		homeownerAboutYou = new HomeownerAboutYou(driver, commons);
 	}
 	
 	protected WebDriver getDriver() {
