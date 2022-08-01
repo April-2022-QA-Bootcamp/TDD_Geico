@@ -4,13 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import com.geico.qa.common.Commons;
+import com.geico.qa.common.CommonFunctions;
 
 public class HomeAddress {
 
-	Commons commons;
+	CommonFunctions commons;
 	
-	public HomeAddress(WebDriver driver, Commons commons) {
+	public HomeAddress(WebDriver driver, CommonFunctions commons) {
 		PageFactory.initElements(driver, this);
 		this.commons = commons;
 	}

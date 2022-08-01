@@ -1,0 +1,22 @@
+Insurance Domain:
+1. Quote : An estimation with pre-approval
+2. Policy : When customer bought the quote
+3. Claim : When there is any dispute
+
+Types of insurance :
+1. Individual - Life, Auto, Property
+2. Commercial - Worker Compensation, Libility
+
+TDD - Test Driven Development
+-- Test > Fail > Build/Develop
+
+Req - The title of the page should be - "What is your name?"
+
+TestNG Parameters - @Parameters("params") and define name and value in TestRunner.xml
+You can define multiple parameters
+
+Explicit Wait/ Fluent Wait/ Conditional Wait/ WebDriverWait - element level
+Implicit Wait - All elements in a page to load
+PageLoadWait - Waiting for the page to load
+Thread.sleep() - Thread will sleep for given time
+

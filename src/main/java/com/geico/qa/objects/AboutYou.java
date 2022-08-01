@@ -7,14 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.geico.qa.common.Commons;
+import com.geico.qa.common.CommonFunctions;
 
 public class AboutYou {
 
 	WebDriver driver;
-	Commons commons;
+	CommonFunctions commons;
 	
-	public AboutYou(WebDriver driver, Commons commons) {
+	public AboutYou(WebDriver driver, CommonFunctions commons) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 		this.commons = commons;
@@ -42,15 +42,15 @@ public class AboutYou {
 	WebElement errorMsgElement;
 	
 	private void getTitle(String expected) {
-		assertEquals(expected, commons.getText(titlElement));
+		assertEquals(commons.getText(titlElement), expected);
 	}
 	
 	private void getCurrentUrl(String expectedUrl) {
-		assertEquals(expectedUrl, commons.getCurrentUrl(driver));
+		assertEquals(commons.getCurrentUrl(driver), expectedUrl);
 	}
 	
 	private void getSubTitle(String expectedSubTitle) {
-		assertEquals(expectedSubTitle, commons.getText(subTitle));
+		assertEquals(commons.getText(subTitle), expectedSubTitle);
 	}
 	
 	private void inputDOB(String dob) {
@@ -70,7 +70,7 @@ public class AboutYou {
 	}
 	
 	private void getErrorMsg(String expectedError) {
-		assertEquals(expectedError, commons.getText(errorMsgElement));
+		assertEquals(commons.getText(errorMsgElement), expectedError);
 	}
 	
 	public void aboutYouSteps(String expected, String expectedUrl, String expectedSubTitle1, String dob, 
