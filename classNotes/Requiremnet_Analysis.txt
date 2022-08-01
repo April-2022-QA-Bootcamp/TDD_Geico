@@ -1,0 +1,29 @@
+Requirement:
+On/after effective date, if the protection class is 'partially protected' and credit result is 'ReferD' the quote will result in a decline. 
+
+•  Decline code  = 529
+•  Decline message = '529 - Fire Protection and Credit Score - ineligible'
+•  Allow override"
+
+Use Cases/Test Scenarios:
+1. On effective date , user has 'partially protected' and 'ReferD' credit. Than system will decline with 529 code and message - '529 - Fire Protection and Credit Score - ineligible'
+2. After effective date, user has 'partially protected' and 'ReferD' credit. Than system will decline with 529 code and message - '529 - Fire Protection and Credit Score - ineligible'
+3. After effective date, user has 'Not Protected' and 'ReferD' credit. Than system will decline with 529 code and message - '529 - Fire Protection and Credit Score - ineligible' (Talk to BA)
+4. After effective date, user has 'partially protected' and 'ReferD' credit. Than system will decline with 529 code and message - '529 - Fire Protection and Credit Score - ineligible'. Allow Override to get quote
+5. Before Effective date, user has 'partially protected' and 'ReferD' credit. Will not decline (Current Rule)
+6. On effective date , user has 'protected' and 'ReferD' credit. System should  not decline ( impose the Current Rule)
+7. On effective date , user has 'partially protected' and 'Accept' credit. System should  not decline ( impose the Current Rule)
+8. Before/On effective date , user has 'protected' and Accept credit. System should  not decline ( impose the Current Rule)
+
+
+Test Case:
+-- Check test cases.xlsx
+
+
+Factors:
+1. Effective Date - 12/13/2022
+2. Fire Protection class
+3. Partially Protected - Protected(10 mil fire station), Partially Protected (10-100 mil) , Not Protected (>100 mil)
+4. ReferD for IL (Credit Result - 300), ReferD, Accept
+5. Quote , Quote with Application
+6. Decline

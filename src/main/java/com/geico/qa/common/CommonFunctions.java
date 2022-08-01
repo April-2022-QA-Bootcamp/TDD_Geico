@@ -7,8 +7,14 @@ import org.testng.Assert;
 
 import com.geico.qa.reporting.Loggers;
 
-public class Commons {
+public class CommonFunctions {
 
+	CommonWaits waits;
+	
+	public CommonFunctions(CommonWaits waits) {
+		this.waits = waits;
+	}
+	
 	public void inputValues(WebElement element, String value) {
 		try {
 			element.sendKeys(value);
@@ -22,6 +28,7 @@ public class Commons {
 	
 	public void click(WebElement element) {
 		try {
+			waits.waitUntilClickable(element);
 			element.click();
 			Loggers.getLog(element + " ---> This element has been clicked");
 		} catch (NullPointerException | NoSuchElementException e) {
