@@ -6,7 +6,7 @@ import com.geico.qa.base.BaseClass;
 
 public class AutoTestClass extends BaseClass{
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void getAAutoQuote() {
 		homePage.homepageAutoSteps("11418");
 		aboutYou.aboutYouSteps("About You", "https://sales.geico.com/quote","Let’s get started.", "02/02/1988",
