@@ -1,17 +1,21 @@
 package com.geico.qa.common;
 
+import java.util.List;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-
 import com.geico.qa.reporting.Loggers;
 
 public class CommonFunctions {
 
+	WebDriver driver;
 	CommonWaits waits;
 	
-	public CommonFunctions(CommonWaits waits) {
+	public CommonFunctions(WebDriver driver, CommonWaits waits) {
+		this.driver = driver;
 		this.waits = waits;
 	}
 	
@@ -65,5 +69,33 @@ public class CommonFunctions {
 			Loggers.getLog(element + " : This element Not Found");
 			Assert.fail();
 		}
+	}
+	
+	public boolean isPresent(By locator) {
+		List<WebElement> elements = driver.findElements(locator);
+		if(elements.size() != 0) {
+			Loggers.getLog(elements + " --- > This element is present and has match of : " + elements.size());
+			return true;
+		}else {
+			Loggers.getLog(elements + " --- > This element is NOT present and no match found : " + elements.size());
+			return false;
+		}
+	}
+	
+	public void selectDropdown(WebElement element, String value) {
+		try {
+			Select select = new Select(element);
+			select.selectByValue(value);
+			Loggers.getLog(value + " : This value has been passed into this element ---> " + element);
+		} catch (NullPointerException | NoSuchElementException e) {
+			e.printStackTrace();
+			Loggers.getLog(element + " : This element Not Found");
+			Assert.fail();
+		}
+	}
+	
+	public void failText() {
+		Loggers.getLog(getClass().getMethods()[0].getName() + " ---> has failed");
+		Assert.fail();
 	}
 }

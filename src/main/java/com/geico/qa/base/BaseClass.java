@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-
 import com.geico.qa.common.CommonFunctions;
 import com.geico.qa.common.CommonWaits;
 import com.geico.qa.objects.AboutYou;
@@ -68,7 +67,7 @@ public class BaseClass {
 	
 	private void initClasses() {
 		waits = new CommonWaits(wait);
-		commons = new CommonFunctions(waits);
+		commons = new CommonFunctions(driver, waits);
 		homePage = new HomePage(driver, commons);
 		aboutYou = new AboutYou(driver, commons);
 		homeAddress = new HomeAddress(driver, commons);
@@ -82,6 +81,6 @@ public class BaseClass {
 	
 	@AfterMethod
 	public void terminate() {
-		driver.quit();
+		//driver.quit();
 	}
 }
