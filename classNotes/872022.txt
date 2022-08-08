@@ -1,0 +1,10 @@
+Q : What is parametirized testing?
+A : 
+1. Parameterized testing is basically using @Parameters annotation from TestNG. And pass that parameter name and value from the testng.xml
+2. Using @DataProvider annotation, where we can pass two-dimensional array of objects or a Iterator
+
+POJO - Plain Old Java Object , where the class has no dependencies on other class/librery
+
+Q : Can you change value at runtime?
+A : Yes, during debugging.
+

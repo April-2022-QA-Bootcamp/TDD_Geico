@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.geico.qa.common.CommonFunctions;
+import com.geico.qa.utils.AutoData;
 
 public class HomePage {
 
@@ -55,6 +56,13 @@ public class HomePage {
 	
 	public void homepageAutoSteps(String value) {
 		inputZipCode(value);
+		clickAuto();
+		clickStartMyQuote();
+		clickContinue();
+	}
+	
+	public void homepageAutoSteps(AutoData autoData) {
+		inputZipCode(autoData.getZipCode());
 		clickAuto();
 		clickStartMyQuote();
 		clickContinue();
