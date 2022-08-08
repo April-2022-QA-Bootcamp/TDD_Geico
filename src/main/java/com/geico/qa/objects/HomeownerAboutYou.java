@@ -214,11 +214,6 @@ public class HomeownerAboutYou {
 		isPurchasing(isPurchasing);
 		movedRecently(movedRecently);
 		clickNext();
-//What is your prior street address
-		//zipcode
-		//city
-		//state
-		//clickNext();
 	}
 	
 	public void homeOwnersAboutYouSteps_BuyerWithOrWithoutClosingDate(String firstName, String lastName, String expectedTitle1,
