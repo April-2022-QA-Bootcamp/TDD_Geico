@@ -1,0 +1,36 @@
+Maven - Maven is a build tool, which help us to build a project by managing the libreries using dependencies
+
+Automation prereqs:
+1. Are we going to reuse these test? - true
+2. Are these tests return benefits? ROI (Return of Investment) - true
+3. Will it run without help of human? - true
+4. Do we have enough resources? Skillsets/ People/ Tools/ Time - true
+
+What benefits we will get:
+1. It can run nightly / after hours and can share result
+2. we can monitor the application overnight
+3. less human interaction
+4. cost saving
+
+Our Framework:
+MANDATORY:
+1. What types of test you are goint to engage? Functional UI Regression tests (Unit + Integration)
+2. Whats libreries in the Framework? Open source - Selenium, TestNG, WebDriverManger, Maven Compiler, Apache poi
+3. What type of framework ? Hybrid (TDD + DDD)
+4. What is the design pattern ? POM - Page Object Model (Reusabilty, Readability, Maintainance)
+--- 3000 Design patterns. 1. Behavioral, 2. Creational, 3. Structural
+OPTIONAL: (Bonus Points)
+5. Main - 
+	BaseClass - In BaseClass we instansiate the driver with webdrivermanger and add pageload timeout, implicit wait, explicit wait, maximize, @Parameters, @BeforeMethod, @AfterMethod
+	CommonClass - Common Actions such as : Input, Click, scroll, dropdown, getUrl, getText, etc. and resue them in object class
+	Object classes - Page wise class where locators, methods, steps are defined
+	Utils - ExcelUtils, configUtils to read data from excel file and properties file
+	Loggers - Log all the events in console or in reporting file
+	Reporting - to get a report after each execution extent report
+6. Test - 
+	We have all the tests that extends the basecalss where our driver has been initiated
+	We use @DataProvider (Object[][], Iterator - ArrayList) to pass data thet we read from excel/database
+7. We use properties file to pass some configurable items such as url , waits
+8. End of the test we can check html report to see the result and share with the team
+	
+
