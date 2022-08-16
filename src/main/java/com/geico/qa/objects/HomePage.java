@@ -1,5 +1,9 @@
 package com.geico.qa.objects;
 
+import static com.geico.qa.utils.DataMap.ZipCode;
+
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -56,6 +60,13 @@ public class HomePage {
 	
 	public void homepageAutoSteps(String value) {
 		inputZipCode(value);
+		clickAuto();
+		clickStartMyQuote();
+		clickContinue();
+	}
+	
+	public void homepageAutoSteps(Map<String, String> map) {
+		inputZipCode(map.get(ZipCode.getValue()));
 		clickAuto();
 		clickStartMyQuote();
 		clickContinue();
