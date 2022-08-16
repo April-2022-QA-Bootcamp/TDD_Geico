@@ -1,6 +1,9 @@
 package com.geico.qa.objects;
 
+import static com.geico.qa.utils.DataMap.*;
 import static org.testng.Assert.assertEquals;
+
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -101,6 +104,19 @@ public class AboutYou {
 		inputFirstName(firstName);
 		inputLastName(lastName);
 		getSubTitle(expectedSubTitle2);
+		clickNext();
+	}
+	
+	public void aboutYouSteps(Map<String, String> map) {
+		getTitle(map.get(Title.name()));
+		getCurrentUrl(map.get(URL.name()));
+		getSubTitle(map.get(SubTitle1.getValue()));
+		inputDOB(map.get(DOB.name()));
+		clickNext();
+		clickNext();
+		inputFirstName(map.get(FirstName.getValue()));
+		inputLastName(map.get(LastName.getValue()));
+		getSubTitle(map.get(SubTitle2.getValue()));
 		clickNext();
 	}
 	
