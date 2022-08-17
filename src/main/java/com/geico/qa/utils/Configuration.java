@@ -7,21 +7,18 @@ import java.util.Properties;
 
 public class Configuration {
 
+	private static Configuration configuration;
 	private Properties properties;
 	private final String defaultPath = "configuration/config.properties";
 	
-	public Configuration(String path) {
-		if(path == null || path.length() < 11) {
-			loadProperty(defaultPath);
-		}else {
-			loadProperty(path);
-		}
+	private Configuration() {
+		loadProperty();
 	}
 
-	private void loadProperty(String path) {
+	private void loadProperty() {
 		properties = new Properties();
 		try {
-			InputStream iStream = new FileInputStream(path);
+			InputStream iStream = new FileInputStream(defaultPath);
 			properties.load(iStream);
 			iStream.close();
 		} catch (IOException e) {
@@ -29,7 +26,14 @@ public class Configuration {
 		}
 	}
 	
-	public String getConfiguration(String key) {
+	public static Configuration getInstance() {
+		if(configuration == null) {
+			configuration = new Configuration();
+		}
+		return configuration;
+	}
+	
+	public String get(String key) {
 		if(key != null) {
 			return properties.getProperty(key);
 		}else {

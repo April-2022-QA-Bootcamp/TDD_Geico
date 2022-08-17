@@ -13,8 +13,8 @@ public class AutoTestMapDataProvider extends BaseClass{
 
 	@DataProvider(name = "excelMap")
 	public Object[][] mapData(){
-		String pathString = configuration.getConfiguration("excelPath");
-		String sheetNameString = configuration.getConfiguration("excelSheetMap");
+		String pathString = configuration.get("excelPath");
+		String sheetNameString = configuration.get("excelSheetMap");
 		ExcelUtil excelUtil = new ExcelUtil(pathString, sheetNameString);
 		int size = excelUtil.dataMap().size();
 		Object[][] objects2d = new Object[size][1];
