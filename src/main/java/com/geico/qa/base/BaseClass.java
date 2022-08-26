@@ -57,8 +57,8 @@ public class BaseClass {
 	
 	@Parameters("browser")
 	@BeforeMethod
-	public void setUp(String browser1) {
-		driver = localDriver(browser1);
+	public void setUp(String browser) {
+		driver = localDriver(browser);
 		driver.manage().window().maximize();
 		driver.get(configuration.get("url"));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(configuration.get("pageloadWait"))));
