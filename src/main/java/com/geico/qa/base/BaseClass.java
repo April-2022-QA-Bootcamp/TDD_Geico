@@ -73,11 +73,11 @@ public class BaseClass {
 			ExtentTestManager.getTest().assignCategory(group);
 		}
 		if(result.getStatus() == ITestResult.SUCCESS) {
-			ExtentTestManager.getTest().log(Status.PASS, "Test Passed");
+			ExtentTestManager.getTest().log(Status.PASS, "TEST PASSED");
 		}else if(result.getStatus() == ITestResult.SKIP) {
-			ExtentTestManager.getTest().log(Status.SKIP, "Test Skipped");
+			ExtentTestManager.getTest().log(Status.SKIP, "TEST SKIPPED");
 		}else {
-			ExtentTestManager.getTest().log(Status.FAIL, "Test Failed \n" + result.getThrowable());
+			ExtentTestManager.getTest().log(Status.FAIL, "TEST FAILED \n" + result.getThrowable());
 			ExtentTestManager.getTest().addScreenCaptureFromPath(commons.getScreenshot(method.getName()));
 		}
 	}
