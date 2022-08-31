@@ -6,7 +6,7 @@ import com.geico.qa.base.BaseClass;
 
 public class HomeTestClass_Normalization extends BaseClass{
 	
-	@Test
+	@Test(groups = "homeowner")
 	public void buyerWithClosingDate() {
 		homePage.homepageHomeSteps("11418");
 		homeAddress.homeAddressSteps("87-88 Lefferts Boulevard", "2C", "11418");
@@ -15,7 +15,7 @@ public class HomeTestClass_Normalization extends BaseClass{
 				true, true, "09/25/2022");
 	}
 	
-	@Test
+	@Test(groups = {"buyer", "home"})
 	public void buyerWithoutClosingDate() {
 		homePage.homepageHomeSteps("11418");
 		homeAddress.homeAddressSteps("87-88 Lefferts Boulevard", "2C", "11418");
@@ -24,7 +24,7 @@ public class HomeTestClass_Normalization extends BaseClass{
 				true, false, null);
 	}
 	
-	@Test
+	@Test(groups = {"homeowner", "home"})
 	public void homeownerLessThanTwoYears() {
 		homePage.homepageHomeSteps("11418");
 		homeAddress.homeAddressSteps("87-88 Lefferts Boulevard", "2C", "11418");
@@ -33,7 +33,7 @@ public class HomeTestClass_Normalization extends BaseClass{
 				true, true);
 	}
 	
-	@Test
+	@Test(groups = {"homeowner", "moreThen2Years"})
 	public void homeownerMoreThanTwoYears() {
 		homePage.homepageHomeSteps("11418");
 		homeAddress.homeAddressSteps("87-88 Lefferts Boulevard", "2C", "11418");
