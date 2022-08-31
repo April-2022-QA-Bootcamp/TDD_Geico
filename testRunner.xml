@@ -3,9 +3,15 @@
 <suite name="Suite">
 	<test thread-count="5" name="Test">
 		<parameter name="browser" value="firefox"></parameter>
+		<groups>
+			<run>
+				<exclude name="homeowner"></exclude>
+				<exclude name="moreThen2Years"></exclude>
+			</run>
+		</groups>
 		<classes>
-			<class name="com.geico.qa.test.auto.AutoTestClass" />
-			<class name="com.geico.qa.test.home.HomeTestClass_AllSteps" />
+			<!--class name="com.geico.qa.test.auto.AutoTestClass" />
+			<class name="com.geico.qa.test.home.HomeTestClass_AllSteps" /-->
 			<class name="com.geico.qa.test.home.HomeTestClass_Normalization" />
 		</classes>
 	</test> <!-- Test -->
