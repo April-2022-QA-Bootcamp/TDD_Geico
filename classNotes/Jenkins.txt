@@ -1,0 +1,15 @@
+Jenkins - CI/CD pipeline (Bamboo, Concourse, AnthillPro, GitLab)
+
+CI + CD - Continuous Integration / Continuous Delivery or Deployment
+
+Developer's Code (New Code)	(----------|Automation Suite|---|DB|---|Network|---|Services|----		(Current Code base)PRODUCTION
+				 ----------|		    |---|  |---|       |---|	    |----)
+
+DEV- dev.amazon.com
+QA - qa.amazon.com
+STAGE - stg.amazon.com
+PROD - amazon.com
+
+1. Tell us about your experiences with ci/cd pipeline?
+A - I have created a job for QA Regression Test in our existing CI/CD pipeline, jenkins. Added our regression suite which will trigger once pipeline has been initiated. By Defining github url, building project as maven, defined maven goals, and added e-mail notification as a post-build task.
+
