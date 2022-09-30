@@ -15,7 +15,7 @@ public class HomeTestClass_AllSteps extends BaseClass{
 				true, true, "08/05/2022", false, null);
 	}
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void getAHomeQuoteFirstTimeBuyer() {
 		homePage.homepageHomeSteps("11418");
 		homeAddress.homeAddressSteps("87-88 Lefferts Boulevard", "2C", "11418");

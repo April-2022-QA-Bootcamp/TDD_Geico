@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -77,6 +78,11 @@ public class CommonFunctions {
 		}
 	}
 	
+	public String getTitle() {
+		Loggers.getLog("Title of the page is : " + driver.getTitle());
+		return driver.getTitle();
+	}
+	
 	public boolean isPresent(By locator) {
 		List<WebElement> elements = driver.findElements(locator);
 		if(elements.size() != 0) {
@@ -97,6 +103,21 @@ public class CommonFunctions {
 			e.printStackTrace();
 			Loggers.getLog(element + " : This element Not Found");
 			Assert.fail();
+		}
+	}
+	
+	public void jsExecutor(String script, WebElement element) {
+		((JavascriptExecutor)driver).executeScript(script, element);
+		Loggers.getLog("Javascript Executor executing ..." + script + " on element ---> " + element);
+	}
+	
+	public void sleep(long sec) {
+		try {
+			Thread.sleep(sec*1000);
+			Loggers.getLog("Sleeping ... zZz " + sec);
+		}catch (InterruptedException e) {
+			e.printStackTrace();
+			Loggers.getLog("Sleep interrupted");
 		}
 	}
 	

@@ -2,14 +2,13 @@ package com.geico.qa.objects;
 
 import static com.geico.qa.utils.DataMap.*;
 import static org.testng.Assert.assertEquals;
-
 import java.util.Map;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.geico.qa.common.CommonFunctions;
 import com.geico.qa.utils.AutoData;
 
@@ -23,6 +22,11 @@ public class AboutYou {
 		this.driver = driver;
 		this.commons = commons;
 	}
+	
+	@FindBy(id = "labelForNo")
+	WebElement noThanksElement;
+	
+	By noThanksBy = By.id("labelForNo");
 	
 	@FindBy(tagName = "h4")
 	WebElement titlElement;
@@ -45,6 +49,13 @@ public class AboutYou {
 	@FindBy(xpath = "(//div[@class='row']//p)[1]")
 	WebElement errorMsgElement;
 	
+	private void clickNoThanks() {
+		if(commons.isPresent(noThanksBy)) {
+			commons.click(noThanksElement);
+			clickNext();
+		}
+	}
+	
 	private void getTitle(String expected) {
 		assertEquals(commons.getText(titlElement), expected);
 	}
@@ -57,8 +68,13 @@ public class AboutYou {
 		assertEquals(commons.getText(subTitle), expectedSubTitle);
 	}
 	
-	private void inputDOB(String dob) {
+	private void getTitle() {
+		commons.getTitle();
+	}
+	
+	private void inputDOB(String dob, String expectedSubTitle1) {
 		commons.inputValues(dobElement, dob);
+		getSubTitle(expectedSubTitle1);
 	}
 	
 	private void clickNext() {
@@ -79,10 +95,11 @@ public class AboutYou {
 	
 	public void aboutYouSteps(String expected, String expectedUrl, String expectedSubTitle1, String dob, 
 			String firstName, String lastName, String expectedSubTitle2, String errorMsg) {
+		clickNoThanks();
 		getTitle(expected);
 		getCurrentUrl(expectedUrl);
-		getSubTitle(expectedSubTitle1);
-		inputDOB(dob);
+		getTitle();
+		inputDOB(dob, expectedSubTitle1);
 		clickNext();
 		clickNext();
 		inputFirstName(firstName);
@@ -97,8 +114,7 @@ public class AboutYou {
 			String firstName, String lastName, String expectedSubTitle2) {
 		getTitle(expected);
 		getCurrentUrl(expectedUrl);
-		getSubTitle(expectedSubTitle1);
-		inputDOB(dob);
+		inputDOB(dob, expectedSubTitle1);
 		clickNext();
 		clickNext();
 		inputFirstName(firstName);
@@ -110,8 +126,7 @@ public class AboutYou {
 	public void aboutYouSteps(Map<String, String> map) {
 		getTitle(map.get(Title.name()));
 		getCurrentUrl(map.get(URL.name()));
-		getSubTitle(map.get(SubTitle1.getValue()));
-		inputDOB(map.get(DOB.name()));
+		inputDOB(map.get(DOB.name()), map.get(SubTitle1.getValue()));
 		clickNext();
 		clickNext();
 		inputFirstName(map.get(FirstName.getValue()));
@@ -123,8 +138,7 @@ public class AboutYou {
 	public void aboutYouSteps(AutoData autoData) {
 		getTitle(autoData.getExpectedTitle());
 		getCurrentUrl(autoData.getExpectedUrl());
-		getSubTitle(autoData.getExpectedSubTitle1());
-		inputDOB(autoData.getDob());
+		inputDOB(autoData.getDob(), autoData.getExpectedSubTitle1());
 		clickNext();
 		clickNext();
 		inputFirstName(autoData.getFirstName());

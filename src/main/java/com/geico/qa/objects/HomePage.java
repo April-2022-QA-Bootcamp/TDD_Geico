@@ -3,7 +3,6 @@ package com.geico.qa.objects;
 import static com.geico.qa.utils.DataMap.ZipCode;
 
 import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,11 +22,11 @@ public class HomePage {
 	
 	@FindBy(id = "ssp-service-zip")
 	WebElement zipCodElement;
-	@FindBy(xpath = "//div[@class='card' and @data-product='auto']")
+	@FindBy(xpath = "//div[@class='card' and @data-product='auto']|(//div[@class='product-cards']/div[@class='card'])[1]")
 	WebElement autoProductElement;
 	@FindBy(xpath = "(//div[@class='card' and @data-product='homeowners'])[1]")
 	WebElement homeProductElement;
-	@FindBy(xpath = "//a[text()='Start My Quote']")
+	@FindBy(xpath = "//div[@id='bundleModalBtn']/p/a")
 	WebElement startMyQuotElement;
 	@FindBy(id = "submitBtn")
 	WebElement startMyHomeQuotElement;
@@ -47,7 +46,14 @@ public class HomePage {
 	}
 	
 	private void clickStartMyQuote() {
+		commons.jsExecutor("arguments[0].scrollIntoView(true);", startMyQuotElement);
 		commons.click(startMyQuotElement);
+		int totalHit = 10;
+		int hit = 0;
+		while(!continuElement.isDisplayed() && hit < totalHit) {
+			commons.jsExecutor("arguments[0].click();", startMyQuotElement);
+			hit++;
+		}
 	}
 	
 	private void clickStartMyHomeQuote() {

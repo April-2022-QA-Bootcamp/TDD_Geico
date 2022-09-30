@@ -1,11 +1,17 @@
 package com.geico.qa.base;
 
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
@@ -14,7 +20,6 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.Status;
 import com.geico.qa.common.CommonFunctions;
@@ -30,7 +35,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
 
-	public Configuration configuration = Configuration.getInstance();
+	public Configuration configuration = Configuration.getInstance("configuration/config.properties");
 	
 	WebDriver driver;
 	WebDriverWait wait;
@@ -58,7 +63,12 @@ public class BaseClass {
 	@Parameters("browser")
 	@BeforeMethod
 	public void setUp(String browser) {
-		driver = localDriver(browser);
+		if(browser.equalsIgnoreCase("browserStackCloud")) {
+			driver = browserStackDriver();
+		}else {
+			driver = localDriver(browser);
+		}
+		configuration = Configuration.getInstance("configuration/config.properties");
 		driver.manage().window().maximize();
 		driver.get(configuration.get("url"));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(configuration.get("pageloadWait"))));
@@ -98,6 +108,25 @@ public class BaseClass {
 		}else {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
+		}
+		return driver;
+	}
+	
+	public WebDriver browserStackDriver() {
+		configuration = Configuration.getInstance("configuration/bsConfig.properties");
+		MutableCapabilities capabilities = new MutableCapabilities();
+		capabilities.setCapability("browserName", configuration.get("browser"));
+		capabilities.setCapability("browserVersion", configuration.get("browserVersion"));
+		capabilities.setCapability("browserstack.user", configuration.get("user"));
+		capabilities.setCapability("browserstack.key", configuration.get("pass"));
+		HashMap<String, Object> browserstackOptions = new HashMap<String, Object>();
+		browserstackOptions.put("os", configuration.get("os"));
+		browserstackOptions.put("osVersion", configuration.get("osVersion"));
+		capabilities.setCapability("bstack:options", browserstackOptions);
+		try {
+			driver = new RemoteWebDriver(new URL(configuration.get("url")), capabilities);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
 		}
 		return driver;
 	}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test thread-count="5" name="Test">
+		<parameter name="browser" value="browserStackCloud"></parameter>
+		<groups>
+			<run>
+				<exclude name="homeowner"></exclude>
+				<exclude name="moreThen2Years"></exclude>
+			</run>
+		</groups>
+		<classes>
+			<!--class name="com.geico.qa.test.auto.AutoTestClass" /> <class name="com.geico.qa.test.home.HomeTestClass_AllSteps" 
+				/ -->
+			<class
+				name="com.geico.qa.test.home.HomeTestClass_Normalization" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
