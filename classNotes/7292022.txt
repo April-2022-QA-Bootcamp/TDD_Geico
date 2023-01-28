@@ -6,15 +6,20 @@ git push origin <branch name> - to push the code in remote branch
 git pull - to fetch the update from remote branch to local
 git merge <another branch>
 Git Status - To check the local project status against last commit
-Git Reset - Unstage the staging
+Git Reset - Un-stage the staging
 Git checkout 'branch name' - to checkout to existing branch
 git checkout -b 'new branch name' - to create a branch
 git push origin 'branch name'
 
-Regression Test - Tests including all the available / existing functionalities are part of the Regression Test
-Smoke Test - Tests that incluides Major functionalities or High Priority Test Cases only
-Q - Who identify the High Priority Test Cases?
-A - We shared our test cased with Busines Analysts (BA), BA help us to find out the High Priority Test Cases
+Uncommon command in git
+Git merge <branch> - merge current branch with the branch specified
+Git rebase - alternative merge without less log
+Git stash - storing the local changes to push the latest code or rebase
 
-@Test attrributes
+Regression Test - Tests including all the available / existing functionalities are part of the Regression Test
+Smoke Test - Tests that includes Major functionalities or High Priority Test Cases only
+Q - Who identify the High Priority Test Cases?
+A - We shared our test cased with Business Analysts (BA), BA help us to find out the High Priority Test Cases
+
+@Test attributes
 enabled = true/false - to run or not run the test
