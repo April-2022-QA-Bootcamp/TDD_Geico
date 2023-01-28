@@ -4,8 +4,8 @@ Insurance Domain:
 3. Claim : When there is any dispute
 
 Types of insurance :
-1. Individual - Life, Auto, Property
-2. Commercial - Worker Compensation, Libility
+1. Individual - Life, Auto, Property, Home
+2. Commercial - Worker Compensation, Liability
 
 TDD - Test Driven Development
 -- Test > Fail > Build/Develop
