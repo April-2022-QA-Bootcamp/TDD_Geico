@@ -6,6 +6,6 @@ public class PracticeClass {
 
     @Test
     public void test(){
-        System.out.println("This is a practice class");
+        System.out.println("This is a modified msg + update");
     }
 }
